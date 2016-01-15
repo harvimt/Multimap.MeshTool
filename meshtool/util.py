@@ -2,25 +2,11 @@ import re
 import os
 import unicodedata
 
-try:
-    import Image
-except ImportError:
-    from PIL import Image
+from PIL import Image
+from PIL import ImageDraw
+from PIL import ImageOps
+from PIL import ImageFile
 
-try:
-    import ImageDraw
-except ImportError:
-    from PIL import ImageDraw
-
-try:
-    import ImageOps
-except ImportError:
-    from PIL import ImageOps
-
-try:
-    import ImageFile
-except ImportError:
-    from PIL import ImageFile
 # Following is a workaround for setting quality=95, optimize=1 when encoding JPEG
 # Otherwise, an error is output when trying to save
 # Taken from http://mail.python.org/pipermail/image-sig/1999-August/000816.html

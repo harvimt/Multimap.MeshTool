@@ -5,8 +5,8 @@ install_requires = []
 try: import collada
 except ImportError: install_requires.append('pycollada>=0.4')
 
-try: import PIL
-except ImportError: install_requires.append('PIL')
+try: from PIL import Image
+except ImportError: install_requires.append('pillow')
 
 try: import argparse
 except ImportError: install_requires.append('argparse')

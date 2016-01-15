@@ -38,9 +38,14 @@ RUN set -x \
 # install "virtualenv", since the vast majority of users of this image will want it
 RUN pip install --no-cache-dir virtualenv
 
+# Make sure you have Python’s development libraries installed since we compiled from source.
+RUN apt-get purge -y libjpeg8-dev
+RUN apt-get update && apt-get install -y libtiff4-dev libjpeg-dev zlib1g-dev libfreetype6-dev liblcms1-dev tcl8.5-dev tk8.5-dev
+
 # Install the mesh optimization tool.
 ADD meshtool/ /var/opt/meshtool/
 ADD setup.py /var/opt/meshtool/setup.py
+RUN pip install Pillow
 RUN pip install meshtool
 
 CMD ["screen -d -m -S meshtool /var/opt/meshtool/"]
