@@ -1,4 +1,4 @@
-FROM buildpack-deps:wheezy
+FROM multimap/meshtool:latest
 
 # remove several traces of debian python
 RUN apt-get purge -y python.*
