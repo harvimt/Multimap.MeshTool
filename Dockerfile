@@ -38,4 +38,9 @@ RUN set -x \
 # install "virtualenv", since the vast majority of users of this image will want it
 RUN pip install --no-cache-dir virtualenv
 
-CMD ["python2"]
+# Install the mesh optimization tool.
+ADD meshtool/ /var/opt/meshtool/
+ADD setup.py /var/opt/meshtool/setup.py
+RUN pip install meshtool
+
+CMD ["screen -d -m -S meshtool /var/opt/meshtool/"]
